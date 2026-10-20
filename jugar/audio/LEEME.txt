@@ -1,0 +1,4 @@
+Carpeta de audio del juego.
+
+- himno.mp3 (opcional): intro de la partida; suenan los primeros 5 segundos. Si no existe, se toca una version sintetizada.
+- casillas/: jingles de cada tipo de casilla (ver casillas/LEEME.txt).

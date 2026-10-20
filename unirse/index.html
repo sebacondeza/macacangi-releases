@@ -2,6 +2,8 @@
 <!--
   Página de invitación de Macacangi Party (se publica en GitHub Pages de sebacondeza/macacangi-releases).
   Link: https://sebacondeza.github.io/macacangi-releases/unirse/#sala=ABCD&host=192.168.1.20:7777
+  Sala P2P directo (sin servidor ni IP): …/unirse/#sala=ABCD&host=p2p
+  Sala con contraseña: se agrega &clave=1 (solo el aviso; la contraseña nunca va en el link)
   Los datos van después del # (no llegan al servidor). Abre macacangi://unirse?sala=…&host=… en el juego.
 -->
 <html lang="es">
@@ -55,9 +57,19 @@
       .room b { font-family: ui-monospace, Consolas, monospace; font-size: 20px; color: var(--blue); user-select: all; word-break: break-all; }
       .btn { display: block; width: 100%; margin-top: 10px; padding: 14px 18px; border-radius: 14px; border: 3px solid var(--ink); font-size: 18px; font-weight: 900; text-decoration: none; cursor: pointer; box-shadow: 0 4px 0 var(--ink); }
       .btn.open { background: #e53935; color: #fff; }
-      .btn.get { background: #ffd54f; color: var(--ink); }
+      .btn.get { background: #ffd54f; color: var(--ink); margin-top: 0; }
+      .btn.get.alt { background: #fff3c4; }
+      .btn small { display: block; margin-top: 2px; font-size: 12px; font-weight: 700; color: var(--muted); }
+      .get-box { margin-top: 16px; padding: 12px; border: 2px dashed var(--line); border-radius: 16px; background: #fff8; }
+      .get-title { margin: 0 0 10px; font-weight: 900; }
+      .get-title small { color: var(--muted); font-weight: 700; }
+      .get-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      @media (max-width: 420px) { .get-grid { grid-template-columns: 1fr; } }
+      .linux { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 800; color: var(--blue); }
+      .btn.web { background: #fff; color: var(--ink); }
       .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink); }
       .bad { color: var(--red); font-weight: 700; }
+      .lock { background: #f3e5f5; border: 2px solid #6a1b9a; color: #4a148c; border-radius: 12px; padding: 10px 14px; margin: 0 0 12px; }
       .help { margin-top: 18px; text-align: left; font-size: 14px; color: var(--muted); }
       .help li { margin: 4px 0; }
     </style>
@@ -70,15 +82,35 @@
         <p>¡Te invitaron a una partida!</p>
         <div class="room">
           <div><span>Sala</span><b id="code"></b></div>
-          <div><span>IP del anfitrión</span><b id="host"></b></div>
+          <div><span id="hostLabel">IP del anfitrión</span><b id="host"></b></div>
         </div>
+        <p id="locked" class="lock" hidden>🔒 Esta sala tiene <b>contraseña</b>. No va en el link: pídesela al anfitrión y escríbela en el juego al entrar.</p>
         <a id="open" class="btn open" href="#">🎲 Abrir el juego y unirme</a>
         <p class="muted">Si tu navegador pregunta, permite abrir <b>Macacangi Party</b>.</p>
-        <a class="btn get" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">⬇️ No lo tengo: descargar</a>
-        <ul class="help">
-          <li>En Windows baja el <b>Setup</b> (se actualiza solo) o el <b>portable</b>. Ábrelo una vez y vuelve a tocar el link.</li>
+        <section class="get-box">
+          <p class="get-title">⬇️ ¿No lo tienes? Descárgalo <small id="ver"></small></p>
+          <div class="get-grid">
+            <a id="dlSetup" class="btn get" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">
+              💿 Instalador<small>Windows · se actualiza solo · recomendado</small>
+            </a>
+            <a id="dlPortable" class="btn get alt" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">
+              🎒 Portable<small>Windows · un solo .exe, sin instalar</small>
+            </a>
+          </div>
+          <a id="dlLinux" class="linux" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">🐧 Linux / Steam Deck (AppImage)</a>
+          <p id="dlNote" class="muted" hidden>✅ La descarga empezó. Ábrelo una vez y vuelve a tocar el link de invitación.</p>
+        </section>
+        <a id="web" class="btn web" href="#" hidden>🌐 Jugar en el navegador</a>
+        <ul class="help" id="helpIp">
+          <li>En Windows elige el <b>Instalador</b> (se actualiza solo) o el <b>Portable</b>. Ábrelo una vez y vuelve a tocar el link.</li>
           <li>¿No se abre? En el juego ve a <b>Online → Unirse por IP</b> y escribe la IP y el código de arriba.</li>
           <li>Si no conecta y están en redes distintas, usen Tailscale (gratis) y pidan el link de nuevo.</li>
+        </ul>
+        <ul class="help" id="helpP2p" hidden>
+          <li>Sala <b>P2P directo</b>: se conectan directo al PC del anfitrión, sin servidor ni IP.</li>
+          <li>En Windows elige el <b>Instalador</b> (se actualiza solo) o el <b>Portable</b>. Ábrelo una vez y vuelve a tocar el link. También puedes jugar en el navegador.</li>
+          <li>¿No se abre? En el juego ve a <b>Online → 🌐 P2P directo → Unirse</b> y escribe el código de arriba.</li>
+          <li>Si no logra conectar (algunas redes no permiten la conexión directa), usen Tailscale (gratis) y el modo por IP.</li>
         </ul>
       </div>
       <p id="bad" class="bad" hidden>Este link de invitación está incompleto. Pídele al anfitrión que lo copie de nuevo.</p>
@@ -91,14 +123,48 @@
       if (valid) {
         document.getElementById('ok').hidden = false
         document.getElementById('code').textContent = code
-        document.getElementById('host').textContent = host
-        const url = `macacangi://unirse?sala=${code}&host=${encodeURIComponent(host)}`
+        const p2p = host === 'p2p'
+        const locked = q.get('clave') === '1'
+        document.getElementById('locked').hidden = !locked
+        document.getElementById('host').textContent = p2p ? 'P2P directo' : host
+        if (p2p) {
+          document.getElementById('hostLabel').textContent = 'Conexión'
+          document.getElementById('helpIp').hidden = true
+          document.getElementById('helpP2p').hidden = false
+          // versión web sin servidor (publicada en ../jugar/)
+          const web = document.getElementById('web')
+          web.href = `../jugar/?sala=${code}&p2p=1${locked ? '&clave=1' : ''}`
+          web.hidden = false
+        }
+        const url = `macacangi://unirse?sala=${code}&host=${encodeURIComponent(host)}${locked ? '&clave=1' : ''}`
         document.getElementById('open').href = url
         // intenta abrir el juego al tiro (el navegador pide permiso)
         setTimeout(() => (location.href = url), 400)
       } else {
         document.getElementById('bad').hidden = false
       }
+
+      // Descarga directa: se busca la última versión y los botones bajan el archivo al tiro
+      // (sin pasar por la página de GitHub). Si la consulta falla, quedan apuntando a los releases.
+      const ASSETS = {
+        dlSetup: /^Macacangi-Party-Setup-[\d.]+\.exe$/,
+        dlPortable: /-portable\.exe$/,
+        dlLinux: /\.AppImage$/,
+      }
+      fetch('https://api.github.com/repos/sebacondeza/macacangi-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((rel) => {
+          document.getElementById('ver').textContent = `· versión ${String(rel.tag_name || '').replace(/^v/, '')}`
+          for (const [id, re] of Object.entries(ASSETS)) {
+            const asset = (rel.assets || []).find((a) => re.test(a.name))
+            const el = document.getElementById(id)
+            if (!asset || !/^https:\/\/github\.com\//.test(asset.browser_download_url)) continue
+            el.href = asset.browser_download_url
+            el.title = `${asset.name} · ${(asset.size / 1048576).toFixed(0)} MB`
+            el.addEventListener('click', () => (document.getElementById('dlNote').hidden = false))
+          }
+        })
+        .catch(() => {})
     </script>
   </body>
 </html>

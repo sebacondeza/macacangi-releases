@@ -1,0 +1,16 @@
+Jingles de las casillas (suenan cuando alguien cae en la casilla).
+
+Para reemplazar uno, pon un archivo con el MISMO NOMBRE en esta carpeta:
+  - <tipo>.mp3  (tiene prioridad), o
+  - <tipo>.wav  (reemplaza el que viene).
+Luego ejecuta "npm run build" para que el servidor lo use.
+
+Nombres:
+  regala, toma, nunca, ejercicio, karaoke, vs, regalo, bombal, meruane,
+  pareja, cultura, blackjack, carol, tiktok
+  fin  -> suena cuando alguien gana la partida
+  regalo_macaco -> al abrir el regalo y salir "Mundo macaco"
+  regalo_bien   -> al abrir el regalo y salir "Se portó bien"
+
+Recomendado: 1 a 3 segundos. Para volver a generar los originales:
+  python tools/make_jingles.py
