@@ -108,6 +108,8 @@
       .gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
       .gallery figcaption { padding: 8px 12px 10px; font-size: 14px; line-height: 1.35; }
       .gallery figcaption b { display: block; font-size: 16px; }
+      .gallery figure.wide { grid-column: 1 / -1; }
+      .gallery figure.wide img { aspect-ratio: auto; object-fit: contain; background: #fff8ec; }
       .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: s; }
       .step { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px 14px 56px; position: relative; line-height: 1.4; }
       .step::before { counter-increment: s; content: counter(s); position: absolute; left: 14px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; font: 400 20px/30px Bangers, Impact, sans-serif; text-align: center; }
@@ -153,6 +155,7 @@
             <div class="tags">
               <span class="tag">🎮 26 minijuegos</span>
               <span class="tag">👥 2 a 8 jugadores</span>
+              <span class="tag">🎭 17 personajes</span>
               <span class="tag">🌐 Online sin servidor</span>
               <span class="tag">🆓 Gratis</span>
             </div>
@@ -184,7 +187,7 @@
         <section>
           <h2>¿Qué trae?</h2>
           <div class="features">
-            <div class="feature"><div class="ico">🎲</div><h3>Tablero 3D a la chilena</h3><p>Entre 50 y 100 casillas: Yo nunca, Karaoke, Cultura chupística, Ejercicio, VS, Bombal y más. Personalízalas con tus propias imágenes.</p></div>
+            <div class="feature"><div class="ico">🎲</div><h3>Tablero 3D a la chilena</h3><p>Entre 50 y 100 casillas: Yo nunca, Karaoke, Cultura chupística, Ejercicio, VS, Bombal, Desastre natural y más. El orden se decide con un dado. Personalízalas con tus propias imágenes.</p></div>
             <div class="feature"><div class="ico">🎮</div><h3>26 minijuegos</h3><p>Chismosos del pasaje, tejo en la fonda, balacera en el Metro, La Pulenta (cartas chilenas), el Impostor… y se suman más.</p></div>
             <div class="feature"><div class="ico">🌐</div><h3>Online sin servidor</h3><p>Crea una sala y tus amigos entran con un código de 4 letras, cada uno desde su casa. Sin abrir puertos. Contraseña opcional.</p></div>
             <div class="feature"><div class="ico">🖥️</div><h3>O en un solo PC</h3><p>Pónganlo en la tele y se pasan el turno. Funciona sin internet.</p></div>
@@ -197,11 +200,24 @@
           <h2>Algunos minijuegos</h2>
           <div class="gallery">
             <figure><a href="img/chismosos.jpg" target="_blank"><img src="img/chismosos.jpg" alt="Chismosos del pasaje" loading="lazy" /></a><figcaption><b>🧹 Chismosos del pasaje</b>Sal a "barrer" para pelar la pelea sin que te pillen.</figcaption></figure>
+            <figure><a href="img/copiar.jpg" target="_blank"><img src="img/copiar.jpg" alt="Copiar en la prueba" loading="lazy" /></a><figcaption><b>📱 Copiar en la prueba</b>Copia del celu mientras la profe escribe en la pizarra… y que no se dé vuelta.</figcaption></figure>
+            <figure><a href="img/papas.jpg" target="_blank"><img src="img/papas.jpg" alt="La bolsa de papitas" loading="lazy" /></a><figcaption><b>🥔 La bolsa de papitas</b>Todos meten la mano. La dorada vale 5; la bolsa vacía, −3.</figcaption></figure>
             <figure><a href="img/tejo.jpg" target="_blank"><img src="img/tejo.jpg" alt="Tejo en la fonda" loading="lazy" /></a><figcaption><b>🥏 Tejo en la fonda</b>Chuzazo sobre la lienza: 5 puntos. Ojo con el viento.</figcaption></figure>
             <figure><a href="img/metro.jpg" target="_blank"><img src="img/metro.jpg" alt="Balacera en el Metro" loading="lazy" /></a><figcaption><b>🔫 Balacera en el Metro</b>Todos contra todos en Baquedano (sin pasar la Bip).</figcaption></figure>
+            <figure><a href="img/colectivo.jpg" target="_blank"><img src="img/colectivo.jpg" alt="Esperando el colectivo" loading="lazy" /></a><figcaption><b>🚕 Esperando el colectivo</b>Hazle señas machacando el botón. El último se queda… y lo asaltan.</figcaption></figure>
             <figure><a href="img/palomas.jpg" target="_blank"><img src="img/palomas.jpg" alt="Alimentar palomas" loading="lazy" /></a><figcaption><b>🕊️ Alimentar palomas</b>Comen más que tío en asado. Cada miga es un punto.</figcaption></figure>
+            <figure><a href="img/luzverde.jpg" target="_blank"><img src="img/luzverde.jpg" alt="Luz verde, luz roja" loading="lazy" /></a><figcaption><b>🚦 Luz verde, luz roja</b>Corre con luz verde y quédate como estatua cuando la muñeca se da vuelta.</figcaption></figure>
             <figure><a href="img/platanos.jpg" target="_blank"><img src="img/platanos.jpg" alt="Plátanos en las alturas" loading="lazy" /></a><figcaption><b>🍌 Plátanos en las alturas</b>Junta plátanos y aturde a los demás para que boten los suyos.</figcaption></figure>
-            <figure><a href="img/golf.jpg" target="_blank"><img src="img/golf.jpg" alt="Mini golf chileno" loading="lazy" /></a><figcaption><b>⛳ Mini golf chileno</b>De La Moneda a Torres del Paine, con guanaco incluido.</figcaption></figure>
+            <figure><a href="img/golf.jpg" target="_blank"><img src="img/golf.jpg" alt="Mini golf chileno" loading="lazy" /></a><figcaption><b>⛳ Mini golf chileno</b>De La Moneda a Rapa Nui, esquivando moais.</figcaption></figure>
+          </div>
+        </section>
+
+        <section>
+          <h2>17 personajes y sorpresas en cada turno</h2>
+          <div class="gallery">
+            <figure class="wide"><a href="img/personajes.jpg" target="_blank"><img src="img/personajes.jpg" alt="Las 17 fichas: Moai, Empanada, Completo, Pingüino, Cóndor, Perro kiltro, Chocman, Nalcaman, Vampiro de Talca, Doctor Parecido y más" loading="lazy" /></a><figcaption><b>🎭 Elige tu ficha</b>Moai, empanada, completo, terremoto, pingüino, cóndor, perro kiltro, Chocman, Nalcaman, el Vampiro de Talca, el Doctor Parecido y más.</figcaption></figure>
+            <figure><a href="img/evento.jpg" target="_blank"><img src="img/evento.jpg" alt="El Pudú del Destino entrega un cohete" loading="lazy" /></a><figcaption><b>🦌 Eventos al inicio del turno</b>El Pudú del Destino te regala un cohete, te cae un meteoro, te funan, pasa el viejo del saco…</figcaption></figure>
+            <figure><a href="img/desastre.jpg" target="_blank"><img src="img/desastre.jpg" alt="Desastre natural: manifestación" loading="lazy" /></a><figcaption><b>🌪️ Desastres naturales</b>Tornado, terremoto grado 8, diluvio o manifestación: le pasa a todos.</figcaption></figure>
           </div>
         </section>
 
