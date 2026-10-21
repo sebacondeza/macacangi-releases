@@ -1,0 +1,283 @@
+<!doctype html>
+<!--
+  Página para compartir y descargar Macacangi Party (raíz del GitHub Pages de sebacondeza/macacangi-releases):
+  https://sebacondeza.github.io/macacangi-releases/
+  Se publica copiando invite/ a la raíz de ese repo (img/, unirse/ e index.html). La web sin servidor va en jugar/.
+-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Macacangi Party · El juego de tablero para carretear</title>
+    <meta name="description" content="Juego de tablero 3D para carretear con amigos: 26 minijuegos, casillas bien chilenas y online sin servidor. Gratis para Windows y Linux, o en el navegador." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sebacondeza.github.io/macacangi-releases/" />
+    <meta property="og:title" content="Macacangi Party 🍻 · El juego de tablero para carretear" />
+    <meta property="og:description" content="26 minijuegos, casillas bien chilenas y online con tus amigos sin servidor. Gratis." />
+    <meta property="og:image" content="https://sebacondeza.github.io/macacangi-releases/img/tablero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #2a1c10;
+        --muted: #7a6650;
+        --panel: #fbf3e2;
+        --line: #c9b58c;
+        --red: #c62828;
+        --blue: #1565c0;
+        --gold: #ffb300;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Nunito, system-ui, 'Segoe UI', sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 5%, #d52b1e44, transparent 35%),
+          radial-gradient(circle at 85% 95%, #0039a644, transparent 35%),
+          repeating-linear-gradient(90deg, #5d3a1a 0 40px, #63401e 40px 80px);
+        min-height: 100vh;
+      }
+      a { color: var(--blue); }
+      .wrap { max-width: 1120px; margin: 0 auto; padding: 16px; }
+      .card { background: var(--panel); border: 6px solid #3b2a1a; border-radius: 24px; box-shadow: 0 20px 60px #0008; padding: clamp(18px, 3vw, 36px); }
+      .bangers { font-family: Bangers, Impact, sans-serif; font-weight: 400; letter-spacing: 1px; }
+
+      /* encabezado */
+      header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+      .brand img { width: 64px; height: 64px; border-radius: 16px; }
+      .brand h1 { margin: 0; font-size: clamp(36px, 6vw, 58px); line-height: 1; color: var(--red); text-shadow: 3px 3px 0 #fff, 5px 5px 0 var(--ink); }
+      .brand h1 span { color: var(--blue); }
+      .brand p { margin: 4px 0 0; color: var(--muted); font-weight: 800; }
+
+      /* botón de donar (igual que en el juego) */
+      .donate {
+        display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink);
+        background: linear-gradient(180deg, #ffe082, #ffb300); border: 3px solid var(--ink); border-radius: 99px;
+        padding: 6px 18px 6px 8px; box-shadow: 0 4px 0 var(--ink); animation: breathe 2.4s ease-in-out infinite;
+      }
+      .donate .mug { display: grid; place-items: center; width: 42px; height: 42px; font-size: 26px; background: #fff8e1; border: 2px solid var(--ink); border-radius: 50%; animation: cheers 2.4s ease-in-out infinite; }
+      .donate b { font-family: Bangers, Impact, sans-serif; font-weight: 400; font-size: 21px; letter-spacing: 1px; display: block; line-height: 1.1; }
+      .donate small { font-size: 12px; font-weight: 800; color: #5d4037; }
+      .donate:hover { animation-play-state: paused; transform: scale(1.05); }
+      @keyframes breathe { 0%, 100% { transform: scale(1); box-shadow: 0 4px 0 var(--ink), 0 0 0 0 #ffb30000; } 50% { transform: scale(1.06); box-shadow: 0 4px 0 var(--ink), 0 0 0 10px #ffb30055; } }
+      @keyframes cheers { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-14deg); } 80% { transform: rotate(10deg); } 90% { transform: rotate(-6deg); } }
+      @media (prefers-reduced-motion: reduce) { .donate, .donate .mug { animation: none; } }
+
+      /* portada */
+      .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: center; margin-top: 22px; }
+      .shot { width: 100%; display: block; border-radius: 16px; border: 4px solid #3b2a1a; box-shadow: 0 10px 30px #0005; }
+      .pitch h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; color: var(--red); }
+      .pitch p { margin: 0 0 14px; font-size: 17px; line-height: 1.45; }
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+      .tag { background: #fff; border: 2px solid var(--line); border-radius: 99px; padding: 3px 10px; font-weight: 800; font-size: 13px; }
+
+      .btn { display: flex; align-items: center; justify-content: center; gap: 8px; flex-direction: column; text-align: center; text-decoration: none; color: var(--ink); border: 3px solid var(--ink); border-radius: 14px; box-shadow: 0 4px 0 var(--ink); padding: 12px 14px; font-weight: 900; font-size: 18px; cursor: pointer; background: #fff; font-family: inherit; }
+      .btn small { font-size: 12px; font-weight: 800; color: var(--muted); }
+      .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink); }
+      .btn.main { background: linear-gradient(#ff5252, #c62828); color: #fff; border-color: #7f0000; box-shadow: 0 4px 0 #7f0000; }
+      .btn.main small { color: #ffe0e0; }
+      .btn.gold { background: #ffd54f; }
+      .downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .downloads .btn.main { grid-column: 1 / -1; font-size: 22px; }
+      .alt-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-weight: 800; font-size: 14px; }
+      .note { color: var(--muted); font-size: 13px; font-weight: 700; margin: 10px 0 0; }
+      #dlNote { color: #2e7d32; }
+
+      /* compartir */
+      .share { margin-top: 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; background: #fff8; border: 2px dashed var(--line); border-radius: 16px; padding: 12px; }
+      .share b { font-size: 18px; }
+      .share .btn { flex-direction: row; font-size: 15px; padding: 8px 14px; }
+      .btn.wa { background: #25d366; color: #fff; border-color: #0b6b33; box-shadow: 0 4px 0 #0b6b33; }
+
+      /* secciones */
+      section { margin-top: 34px; }
+      section > h2 { font-family: Bangers, Impact, sans-serif; font-weight: 400; letter-spacing: 1px; font-size: 34px; margin: 0 0 14px; text-align: center; }
+      .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .feature { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+      .feature .ico { font-size: 30px; }
+      .feature h3 { margin: 4px 0 4px; font-size: 18px; }
+      .feature p { margin: 0; color: #4e3d2c; line-height: 1.4; }
+      .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .gallery figure { margin: 0; background: #fff9; border: 2px solid var(--line); border-radius: 16px; overflow: hidden; }
+      .gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+      .gallery figcaption { padding: 8px 12px 10px; font-size: 14px; line-height: 1.35; }
+      .gallery figcaption b { display: block; font-size: 16px; }
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: s; }
+      .step { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px 14px 56px; position: relative; line-height: 1.4; }
+      .step::before { counter-increment: s; content: counter(s); position: absolute; left: 14px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; font: 400 20px/30px Bangers, Impact, sans-serif; text-align: center; }
+      .news { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 18px; }
+      .news h3 { margin: 0 0 6px; }
+      .news ul { margin: 0; padding-left: 20px; line-height: 1.45; }
+      footer { text-align: center; color: #f3e5cf; font-weight: 700; font-size: 14px; padding: 18px 8px 28px; }
+      footer a { color: #ffe082; }
+
+      @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; }
+        .features, .gallery, .steps { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 560px) {
+        header { justify-content: center; }
+        .brand img { width: 52px; height: 52px; }
+        .features, .gallery, .steps, .downloads { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <main class="card">
+        <header>
+          <a class="brand" href="./">
+            <img src="icon.png" alt="" />
+            <div>
+              <h1 class="bangers">Macacangi <span>Party</span> 🍻</h1>
+              <p>El juego de tablero para carretear. Beber con responsabilidad… o no tanto.</p>
+            </div>
+          </a>
+          <a class="donate" href="https://paypal.me/scondeza" target="_blank" rel="noreferrer" title="Si te gustó el juego, invítame una chela (PayPal)">
+            <span class="mug" aria-hidden="true">🍺</span>
+            <span><b>Invítame una chela</b><small>Donar con PayPal</small></span>
+          </a>
+        </header>
+
+        <div class="hero">
+          <img class="shot" src="img/tablero.jpg" alt="El tablero 3D de Macacangi Party con las fichas, las casillas y el mapa de Chile" />
+          <div class="pitch">
+            <h2 class="bangers">Mario Party, pero de carrete y bien chileno</h2>
+            <p>Lanza el dado, cae en <b>Yo nunca</b>, <b>Karaoke</b> o <b>Cultura chupística</b>, y al final de cada ronda todos compiten en un minijuego. El que pierde… ya sabe.</p>
+            <div class="tags">
+              <span class="tag">🎮 26 minijuegos</span>
+              <span class="tag">👥 2 a 8 jugadores</span>
+              <span class="tag">🌐 Online sin servidor</span>
+              <span class="tag">🆓 Gratis</span>
+            </div>
+            <div class="downloads">
+              <a id="dlSetup" class="btn main" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">
+                ⬇️ Descargar para Windows<small>Instalador · se actualiza solo · recomendado</small>
+              </a>
+              <a id="dlPortable" class="btn gold" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">
+                🎒 Portable<small>Un solo .exe, sin instalar</small>
+              </a>
+              <a class="btn" href="jugar/">🌐 Jugar en el navegador<small>Sin descargar (online P2P)</small></a>
+            </div>
+            <div class="alt-links">
+              <a id="dlLinux" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">🐧 Linux / Steam Deck (AppImage)</a>
+              <a href="https://github.com/sebacondeza/macacangi-releases/releases">Todas las versiones</a>
+            </div>
+            <p class="note"><span id="ver">Windows 10/11 · Linux</span> · +18: es un juego para tomar. Toma con responsabilidad.</p>
+            <p id="dlNote" class="note" hidden>✅ La descarga empezó. Si Windows avisa que es una app poco común, toca <b>Más información → Ejecutar de todas formas</b>.</p>
+          </div>
+        </div>
+
+        <div class="share">
+          <b>📣 Compártelo con tu grupo:</b>
+          <a class="btn wa" id="wa" href="#" target="_blank" rel="noreferrer">💬 WhatsApp</a>
+          <button class="btn" id="copy" type="button">📋 Copiar link</button>
+          <button class="btn" id="native" type="button" hidden>📤 Compartir…</button>
+        </div>
+
+        <section>
+          <h2>¿Qué trae?</h2>
+          <div class="features">
+            <div class="feature"><div class="ico">🎲</div><h3>Tablero 3D a la chilena</h3><p>Entre 50 y 100 casillas: Yo nunca, Karaoke, Cultura chupística, Ejercicio, VS, Bombal y más. Personalízalas con tus propias imágenes.</p></div>
+            <div class="feature"><div class="ico">🎮</div><h3>26 minijuegos</h3><p>Chismosos del pasaje, tejo en la fonda, balacera en el Metro, UNO a la chilena, el Impostor… y se suman más.</p></div>
+            <div class="feature"><div class="ico">🌐</div><h3>Online sin servidor</h3><p>Crea una sala y tus amigos entran con un código de 4 letras, cada uno desde su casa. Sin abrir puertos. Contraseña opcional.</p></div>
+            <div class="feature"><div class="ico">🖥️</div><h3>O en un solo PC</h3><p>Pónganlo en la tele y se pasan el turno. Funciona sin internet.</p></div>
+            <div class="feature"><div class="ico">👀</div><h3>Modo espectador</h3><p>Para transmitir en Discord sin mostrar las cartas ni los secretos de nadie.</p></div>
+            <div class="feature"><div class="ico">🔄</div><h3>Siempre al día</h3><p>La app se actualiza sola con cada versión nueva. Tú solo juega.</p></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Algunos minijuegos</h2>
+          <div class="gallery">
+            <figure><a href="img/chismosos.jpg" target="_blank"><img src="img/chismosos.jpg" alt="Chismosos del pasaje" loading="lazy" /></a><figcaption><b>🧹 Chismosos del pasaje</b>Sal a "barrer" para pelar la pelea sin que te pillen.</figcaption></figure>
+            <figure><a href="img/tejo.jpg" target="_blank"><img src="img/tejo.jpg" alt="Tejo en la fonda" loading="lazy" /></a><figcaption><b>🥏 Tejo en la fonda</b>Chuzazo sobre la lienza: 5 puntos. Ojo con el viento.</figcaption></figure>
+            <figure><a href="img/metro.jpg" target="_blank"><img src="img/metro.jpg" alt="Balacera en el Metro" loading="lazy" /></a><figcaption><b>🔫 Balacera en el Metro</b>Todos contra todos en Baquedano (sin pasar la Bip).</figcaption></figure>
+            <figure><a href="img/palomas.jpg" target="_blank"><img src="img/palomas.jpg" alt="Alimentar palomas" loading="lazy" /></a><figcaption><b>🕊️ Alimentar palomas</b>Comen más que tío en asado. Cada miga es un punto.</figcaption></figure>
+            <figure><a href="img/platanos.jpg" target="_blank"><img src="img/platanos.jpg" alt="Plátanos en las alturas" loading="lazy" /></a><figcaption><b>🍌 Plátanos en las alturas</b>Junta plátanos y aturde a los demás para que boten los suyos.</figcaption></figure>
+            <figure><a href="img/golf.jpg" target="_blank"><img src="img/golf.jpg" alt="Mini golf chileno" loading="lazy" /></a><figcaption><b>⛳ Mini golf chileno</b>De La Moneda a Torres del Paine, con guanaco incluido.</figcaption></figure>
+          </div>
+        </section>
+
+        <section>
+          <h2>Jugar online en 3 pasos</h2>
+          <div class="steps">
+            <div class="step"><b>Descarguen el juego</b><br />O abran la versión del navegador. Es gratis.</div>
+            <div class="step"><b>Uno crea la sala</b><br />En <i>Online → 🌐 P2P directo → Crear sala</i>. Si quiere, le pone contraseña.</div>
+            <div class="step"><b>Los demás entran con el código</b><br />El anfitrión comparte el link o dicta las 4 letras. ¡Salud! 🍻</div>
+          </div>
+        </section>
+
+        <section id="novedades" hidden>
+          <h2>Novedades</h2>
+          <div class="news"><h3 id="newsTitle"></h3><ul id="newsList"></ul></div>
+        </section>
+      </main>
+      <footer>
+        Hecho en Chile 🇨🇱 por GranSeba · <a href="https://github.com/sebacondeza/macacangi-releases/releases">Versiones</a> · +18 · Si vas a manejar, no tomes.
+      </footer>
+    </div>
+    <script>
+      // Compartir
+      const PAGE = 'https://sebacondeza.github.io/macacangi-releases/'
+      const MSG = '¡Juguemos Macacangi Party! 🍻 El juego de tablero para carretear, gratis: '
+      document.getElementById('wa').href = 'https://wa.me/?text=' + encodeURIComponent(MSG + PAGE)
+      const copyBtn = document.getElementById('copy')
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(PAGE)
+          copyBtn.textContent = '✅ Link copiado'
+        } catch {
+          prompt('Copia este link:', PAGE)
+        }
+        setTimeout(() => (copyBtn.textContent = '📋 Copiar link'), 1800)
+      })
+      if (navigator.share) {
+        const nat = document.getElementById('native')
+        nat.hidden = false
+        nat.addEventListener('click', () => navigator.share({ title: 'Macacangi Party', text: MSG, url: PAGE }).catch(() => {}))
+      }
+
+      // Descargas directas de la última versión (sin pasar por la página de GitHub) y sus novedades.
+      // Si la consulta falla, los botones siguen llevando a los releases.
+      const ASSETS = { dlSetup: /^Macacangi-Party-Setup-[\d.]+\.exe$/, dlPortable: /-portable\.exe$/, dlLinux: /\.AppImage$/ }
+      fetch('https://api.github.com/repos/sebacondeza/macacangi-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((rel) => {
+          const version = String(rel.tag_name || '').replace(/^v/, '')
+          document.getElementById('ver').textContent = `Versión ${version} · Windows 10/11 · Linux`
+          for (const [id, re] of Object.entries(ASSETS)) {
+            const asset = (rel.assets || []).find((a) => re.test(a.name))
+            const el = document.getElementById(id)
+            if (!asset || !/^https:\/\/github\.com\//.test(asset.browser_download_url)) continue
+            el.href = asset.browser_download_url
+            el.title = `${asset.name} · ${(asset.size / 1048576).toFixed(0)} MB`
+            el.addEventListener('click', () => (document.getElementById('dlNote').hidden = false))
+          }
+          // novedades de la última versión (como texto, sin HTML)
+          const lines = String(rel.body || '')
+            .split(/\r?\n/)
+            .map((l) => l.trim().replace(/^[-*]\s+/, '').replace(/\*\*|__|`/g, ''))
+            .filter((l) => l && !/^#/.test(l))
+            .slice(0, 8)
+          if (lines.length) {
+            document.getElementById('newsTitle').textContent = `Versión ${version}`
+            const ul = document.getElementById('newsList')
+            for (const l of lines) {
+              const li = document.createElement('li')
+              li.textContent = l
+              ul.appendChild(li)
+            }
+            document.getElementById('novedades').hidden = false
+          }
+        })
+        .catch(() => {})
+    </script>
+  </body>
+</html>
