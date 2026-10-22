@@ -1,0 +1,4 @@
+Sonidos de Kenney (www.kenney.nl), licencia Creative Commons Zero (CC0 1.0).
+Packs: Interface Sounds, UI Audio, Impact Sounds, Casino Audio, RPG Audio.
+Se pueden usar en proyectos comerciales sin atribución.
+Para reemplazar un sonido, sobrescribe el .ogg con el mismo nombre (ver bank.json).

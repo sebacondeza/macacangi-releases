@@ -1,0 +1,326 @@
+{
+ "ui_click": [
+  "ui_click_1.ogg",
+  "ui_click_2.ogg",
+  "ui_click_3.ogg",
+  "ui_click_4.ogg",
+  "ui_click_5.ogg"
+ ],
+ "ui_hover": [
+  "ui_hover_1.ogg",
+  "ui_hover_2.ogg",
+  "ui_hover_3.ogg",
+  "ui_hover_4.ogg",
+  "ui_hover_5.ogg",
+  "ui_hover_6.ogg"
+ ],
+ "ui_open": [
+  "ui_open_1.ogg",
+  "ui_open_2.ogg",
+  "ui_open_3.ogg",
+  "ui_open_4.ogg"
+ ],
+ "ui_close": [
+  "ui_close_1.ogg",
+  "ui_close_2.ogg",
+  "ui_close_3.ogg",
+  "ui_close_4.ogg"
+ ],
+ "ui_back": [
+  "ui_back_1.ogg",
+  "ui_back_2.ogg",
+  "ui_back_3.ogg",
+  "ui_back_4.ogg"
+ ],
+ "ui_confirm": [
+  "ui_confirm_1.ogg",
+  "ui_confirm_2.ogg",
+  "ui_confirm_3.ogg",
+  "ui_confirm_4.ogg"
+ ],
+ "ui_error": [
+  "ui_error_1.ogg",
+  "ui_error_2.ogg",
+  "ui_error_3.ogg",
+  "ui_error_4.ogg"
+ ],
+ "ui_select": [
+  "ui_select_1.ogg",
+  "ui_select_2.ogg",
+  "ui_select_3.ogg",
+  "ui_select_4.ogg"
+ ],
+ "ui_toggle": [
+  "ui_toggle_1.ogg",
+  "ui_toggle_2.ogg",
+  "ui_toggle_3.ogg",
+  "ui_toggle_4.ogg"
+ ],
+ "ui_tick": [
+  "ui_tick_1.ogg",
+  "ui_tick_2.ogg",
+  "ui_tick_3.ogg"
+ ],
+ "ui_drop": [
+  "ui_drop_1.ogg",
+  "ui_drop_2.ogg",
+  "ui_drop_3.ogg",
+  "ui_drop_4.ogg"
+ ],
+ "ui_scratch": [
+  "ui_scratch_1.ogg",
+  "ui_scratch_2.ogg",
+  "ui_scratch_3.ogg",
+  "ui_scratch_4.ogg",
+  "ui_scratch_5.ogg"
+ ],
+ "ui_switch": [
+  "ui_switch_1.ogg",
+  "ui_switch_2.ogg",
+  "ui_switch_3.ogg",
+  "ui_switch_4.ogg",
+  "ui_switch_5.ogg",
+  "ui_switch_6.ogg"
+ ],
+ "ui_pluck": [
+  "ui_pluck_1.ogg",
+  "ui_pluck_2.ogg"
+ ],
+ "ui_glass": [
+  "ui_glass_1.ogg",
+  "ui_glass_2.ogg",
+  "ui_glass_3.ogg",
+  "ui_glass_4.ogg",
+  "ui_glass_5.ogg",
+  "ui_glass_6.ogg"
+ ],
+ "card_place": [
+  "card_place_1.ogg",
+  "card_place_2.ogg",
+  "card_place_3.ogg",
+  "card_place_4.ogg"
+ ],
+ "card_slide": [
+  "card_slide_1.ogg",
+  "card_slide_2.ogg",
+  "card_slide_3.ogg",
+  "card_slide_4.ogg"
+ ],
+ "card_shove": [
+  "card_shove_1.ogg",
+  "card_shove_2.ogg",
+  "card_shove_3.ogg",
+  "card_shove_4.ogg"
+ ],
+ "card_shuffle": [
+  "card_shuffle.ogg"
+ ],
+ "card_fan": [
+  "card_fan_1.ogg",
+  "card_fan_2.ogg"
+ ],
+ "chip_lay": [
+  "chip_lay_1.ogg",
+  "chip_lay_2.ogg",
+  "chip_lay_3.ogg"
+ ],
+ "chips_stack": [
+  "chips_stack_1.ogg",
+  "chips_stack_2.ogg",
+  "chips_stack_3.ogg"
+ ],
+ "dice_shake": [
+  "dice_shake_1.ogg",
+  "dice_shake_2.ogg",
+  "dice_shake_3.ogg"
+ ],
+ "dice_throw": [
+  "dice_throw_1.ogg",
+  "dice_throw_2.ogg",
+  "dice_throw_3.ogg"
+ ],
+ "die_throw": [
+  "die_throw_1.ogg",
+  "die_throw_2.ogg",
+  "die_throw_3.ogg",
+  "die_throw_4.ogg"
+ ],
+ "hit_punch": [
+  "hit_punch_1.ogg",
+  "hit_punch_2.ogg",
+  "hit_punch_3.ogg",
+  "hit_punch_4.ogg",
+  "hit_punch_5.ogg"
+ ],
+ "hit_punch_light": [
+  "hit_punch_light_1.ogg",
+  "hit_punch_light_2.ogg",
+  "hit_punch_light_3.ogg",
+  "hit_punch_light_4.ogg",
+  "hit_punch_light_5.ogg"
+ ],
+ "hit_soft": [
+  "hit_soft_1.ogg",
+  "hit_soft_2.ogg",
+  "hit_soft_3.ogg",
+  "hit_soft_4.ogg",
+  "hit_soft_5.ogg"
+ ],
+ "hit_soft_heavy": [
+  "hit_soft_heavy_1.ogg",
+  "hit_soft_heavy_2.ogg",
+  "hit_soft_heavy_3.ogg",
+  "hit_soft_heavy_4.ogg",
+  "hit_soft_heavy_5.ogg"
+ ],
+ "hit_wood": [
+  "hit_wood_1.ogg",
+  "hit_wood_2.ogg",
+  "hit_wood_3.ogg",
+  "hit_wood_4.ogg",
+  "hit_wood_5.ogg"
+ ],
+ "hit_wood_heavy": [
+  "hit_wood_heavy_1.ogg",
+  "hit_wood_heavy_2.ogg",
+  "hit_wood_heavy_3.ogg",
+  "hit_wood_heavy_4.ogg",
+  "hit_wood_heavy_5.ogg"
+ ],
+ "hit_plank": [
+  "hit_plank_1.ogg",
+  "hit_plank_2.ogg",
+  "hit_plank_3.ogg",
+  "hit_plank_4.ogg",
+  "hit_plank_5.ogg"
+ ],
+ "hit_metal": [
+  "hit_metal_1.ogg",
+  "hit_metal_2.ogg",
+  "hit_metal_3.ogg",
+  "hit_metal_4.ogg",
+  "hit_metal_5.ogg"
+ ],
+ "hit_metal_heavy": [
+  "hit_metal_heavy_1.ogg",
+  "hit_metal_heavy_2.ogg",
+  "hit_metal_heavy_3.ogg",
+  "hit_metal_heavy_4.ogg",
+  "hit_metal_heavy_5.ogg"
+ ],
+ "hit_plate": [
+  "hit_plate_1.ogg",
+  "hit_plate_2.ogg",
+  "hit_plate_3.ogg",
+  "hit_plate_4.ogg",
+  "hit_plate_5.ogg"
+ ],
+ "hit_glass": [
+  "hit_glass_1.ogg",
+  "hit_glass_2.ogg",
+  "hit_glass_3.ogg",
+  "hit_glass_4.ogg",
+  "hit_glass_5.ogg"
+ ],
+ "hit_generic": [
+  "hit_generic_1.ogg",
+  "hit_generic_2.ogg",
+  "hit_generic_3.ogg",
+  "hit_generic_4.ogg",
+  "hit_generic_5.ogg"
+ ],
+ "hit_tin": [
+  "hit_tin_1.ogg",
+  "hit_tin_2.ogg",
+  "hit_tin_3.ogg",
+  "hit_tin_4.ogg",
+  "hit_tin_5.ogg"
+ ],
+ "bell": [
+  "bell_1.ogg",
+  "bell_2.ogg",
+  "bell_3.ogg",
+  "bell_4.ogg",
+  "bell_5.ogg"
+ ],
+ "step_grass": [
+  "step_grass_1.ogg",
+  "step_grass_2.ogg",
+  "step_grass_3.ogg",
+  "step_grass_4.ogg",
+  "step_grass_5.ogg"
+ ],
+ "step_concrete": [
+  "step_concrete_1.ogg",
+  "step_concrete_2.ogg",
+  "step_concrete_3.ogg",
+  "step_concrete_4.ogg",
+  "step_concrete_5.ogg"
+ ],
+ "step_wood": [
+  "step_wood_1.ogg",
+  "step_wood_2.ogg",
+  "step_wood_3.ogg",
+  "step_wood_4.ogg",
+  "step_wood_5.ogg"
+ ],
+ "step_carpet": [
+  "step_carpet_1.ogg",
+  "step_carpet_2.ogg",
+  "step_carpet_3.ogg",
+  "step_carpet_4.ogg",
+  "step_carpet_5.ogg"
+ ],
+ "cloth": [
+  "cloth_1.ogg",
+  "cloth_2.ogg",
+  "cloth_3.ogg",
+  "cloth_4.ogg"
+ ],
+ "knife_slice": [
+  "knife_slice_1.ogg",
+  "knife_slice_2.ogg"
+ ],
+ "knife_draw": [
+  "knife_draw_1.ogg",
+  "knife_draw_2.ogg",
+  "knife_draw_3.ogg"
+ ],
+ "chop": [
+  "chop.ogg"
+ ],
+ "coins": [
+  "coins_1.ogg",
+  "coins_2.ogg"
+ ],
+ "book_flip": [
+  "book_flip_1.ogg",
+  "book_flip_2.ogg",
+  "book_flip_3.ogg"
+ ],
+ "book_place": [
+  "book_place_1.ogg",
+  "book_place_2.ogg",
+  "book_place_3.ogg"
+ ],
+ "metal_pot": [
+  "metal_pot_1.ogg",
+  "metal_pot_2.ogg",
+  "metal_pot_3.ogg"
+ ],
+ "metal_click": [
+  "metal_click.ogg"
+ ],
+ "door_open": [
+  "door_open_1.ogg",
+  "door_open_2.ogg"
+ ],
+ "creak": [
+  "creak_1.ogg",
+  "creak_2.ogg",
+  "creak_3.ogg"
+ ],
+ "leather": [
+  "leather.ogg"
+ ]
+}
