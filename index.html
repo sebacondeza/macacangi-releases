@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Página para compartir y descargar Macacangi Party (raíz del GitHub Pages de sebacondeza/macacangi-releases):
+  Página para compartir y descargar Curao Party: Copeteverse (raíz del GitHub Pages de sebacondeza/macacangi-releases):
   https://sebacondeza.github.io/macacangi-releases/
   Se publica copiando invite/ a la raíz de ese repo (img/, unirse/ e index.html). La web sin servidor va en jugar/.
 -->
@@ -8,27 +8,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Macacangi Party: party game gratis chileno para carretear</title>
-    <meta name="description" content="¿Buscas un party game gratis en Chile? Juega Macacangi Party: tablero 3D de temática chilena, 26 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
+    <title>Curao Party: Copeteverse: party game gratis chileno para carretear</title>
+    <meta name="description" content="¿Buscas un party game gratis en Chile? Juega Curao Party: Copeteverse: tablero 3D de temática chilena, 26 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sebacondeza.github.io/macacangi-releases/" />
     <meta name="google-site-verification" content="C3hAZkJav9RDWLQu-9aS6Bcg-3XktcgtZqG92izZudA" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CL" />
-    <meta property="og:site_name" content="Macacangi Party" />
+    <meta property="og:site_name" content="Curao Party: Copeteverse" />
     <meta property="og:url" content="https://sebacondeza.github.io/macacangi-releases/" />
-    <meta property="og:title" content="Macacangi Party: party game gratis chileno para carretear" />
+    <meta property="og:title" content="Curao Party: Copeteverse: party game gratis chileno para carretear" />
     <meta property="og:description" content="Party game gratis de temática chilena: 26 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
     <meta property="og:image" content="https://sebacondeza.github.io/macacangi-releases/img/tablero.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Macacangi Party: party game gratis chileno para carretear" />
+    <meta name="twitter:title" content="Curao Party: Copeteverse: party game gratis chileno para carretear" />
     <meta name="twitter:description" content="Party game gratis de temática chilena: 26 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
     <meta name="twitter:image" content="https://sebacondeza.github.io/macacangi-releases/img/tablero.jpg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Macacangi Party",
+        "name": "Curao Party: Copeteverse",
         "description": "Party game gratis de temática chilena para jugar con amigos: tablero 3D, 26 minijuegos y modos local, online y navegador.",
         "url": "https://sebacondeza.github.io/macacangi-releases/",
         "applicationCategory": "GameApplication",
@@ -153,6 +153,7 @@
         .brand img { width: 52px; height: 52px; }
         .features, .gallery, .steps, .downloads { grid-template-columns: 1fr; }
       }
+      .brand-sub { display: block; font-size: 0.45em; letter-spacing: 3px; color: #ffd54f; line-height: 1; }
     </style>
   </head>
   <body>
@@ -162,7 +163,7 @@
           <a class="brand" href="./">
             <img src="icon.png" alt="" />
             <div>
-              <h1 class="bangers">Macacangi <span>Party</span> 🍻</h1>
+              <h1 class="bangers">Curao <span>Party</span> <small class="brand-sub">Copeteverse</small> 🍻</h1>
               <p>El juego de tablero para carretear. Beber con responsabilidad… o no tanto.</p>
             </div>
           </a>
@@ -173,7 +174,7 @@
         </header>
 
         <div class="hero">
-          <img class="shot" src="img/tablero.jpg" alt="El tablero 3D de Macacangi Party con las fichas, las casillas y el mapa de Chile" />
+          <img class="shot" src="img/tablero.jpg" alt="El tablero 3D de Curao Party: Copeteverse con las fichas, las casillas y el mapa de Chile" />
           <div class="pitch">
             <h2 class="bangers">El tablero 3D del carrete, con cartas bien chilenas</h2>
             <p>Un <b>party game gratis de temática chilena</b> para jugar con amigos: lanza el dado, cae en <b>Yo nunca</b>, <b>Karaoke</b> o <b>Cultura chupística</b>, y compitan en 26 minijuegos. Jueguen online o en un solo PC.</p>
@@ -267,7 +268,7 @@
     <script>
       // Compartir
       const PAGE = 'https://sebacondeza.github.io/macacangi-releases/'
-      const MSG = '¡Juguemos Macacangi Party! 🍻 El juego de tablero para carretear, gratis: '
+      const MSG = '¡Juguemos Curao Party: Copeteverse! 🍻 El juego de tablero para carretear, gratis: '
       document.getElementById('wa').href = 'https://wa.me/?text=' + encodeURIComponent(MSG + PAGE)
       const copyBtn = document.getElementById('copy')
       copyBtn.addEventListener('click', async () => {
@@ -282,12 +283,12 @@
       if (navigator.share) {
         const nat = document.getElementById('native')
         nat.hidden = false
-        nat.addEventListener('click', () => navigator.share({ title: 'Macacangi Party', text: MSG, url: PAGE }).catch(() => {}))
+        nat.addEventListener('click', () => navigator.share({ title: 'Curao Party: Copeteverse', text: MSG, url: PAGE }).catch(() => {}))
       }
 
       // Descargas directas de la última versión (sin pasar por la página de GitHub) y sus novedades.
       // Si la consulta falla, los botones siguen llevando a los releases.
-      const ASSETS = { dlSetup: /^Macacangi-Party-Setup-[\d.]+\.exe$/, dlPortable: /-portable\.exe$/, dlLinux: /\.AppImage$/ }
+      const ASSETS = { dlSetup: /^Curao-Party-Setup-[\d.]+\.exe$/, dlPortable: /-portable\.exe$/, dlLinux: /\.AppImage$/ }
       fetch('https://api.github.com/repos/sebacondeza/macacangi-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
         .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
         .then((rel) => {

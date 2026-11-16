@@ -1,18 +1,19 @@
 <!doctype html>
 <!--
-  Página de invitación de Macacangi Party (se publica en GitHub Pages de sebacondeza/macacangi-releases).
+  Página de invitación de Curao Party: Copeteverse (se publica en GitHub Pages de sebacondeza/macacangi-releases).
   Link: https://sebacondeza.github.io/macacangi-releases/unirse/#sala=ABCD&host=192.168.1.20:7777
   Sala P2P directo (sin servidor ni IP): …/unirse/#sala=ABCD&host=p2p
   Sala con contraseña: se agrega &clave=1 (solo el aviso; la contraseña nunca va en el link)
+  Solo espectador: se agrega &mirar=1
   Los datos van después del # (no llegan al servidor). Abre macacangi://unirse?sala=…&host=… en el juego.
 -->
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Únete a Macacangi Party</title>
-    <meta name="description" content="Te invitaron a una partida de Macacangi Party, el juego de tablero para carretear." />
-    <meta property="og:title" content="¡Te invitaron a Macacangi Party! 🍻" />
+    <title>Únete a Curao Party: Copeteverse</title>
+    <meta name="description" content="Te invitaron a una partida de Curao Party: Copeteverse, el juego de tablero para carretear." />
+    <meta property="og:title" content="¡Te invitaron a Curao Party: Copeteverse! 🍻" />
     <meta property="og:description" content="Toca el link para abrir el juego y entrar a la sala." />
     <meta property="og:image" content="https://sebacondeza.github.io/macacangi-releases/icon.png" />
     <link rel="icon" href="../icon.png" />
@@ -72,21 +73,22 @@
       .lock { background: #f3e5f5; border: 2px solid #6a1b9a; color: #4a148c; border-radius: 12px; padding: 10px 14px; margin: 0 0 12px; }
       .help { margin-top: 18px; text-align: left; font-size: 14px; color: var(--muted); }
       .help li { margin: 4px 0; }
+      .brand-sub { display: block; font-size: 0.45em; letter-spacing: 3px; color: #ffd54f; line-height: 1; }
     </style>
   </head>
   <body>
     <main class="card">
       <img src="../icon.png" alt="" />
-      <h1>Macacangi <span>Party</span> 🍻</h1>
+      <h1>Curao <span>Party</span> <small class="brand-sub">Copeteverse</small> 🍻</h1>
       <div id="ok" hidden>
-        <p>¡Te invitaron a una partida!</p>
+        <p id="inviteText">¡Te invitaron a una partida!</p>
         <div class="room">
           <div><span>Sala</span><b id="code"></b></div>
           <div><span id="hostLabel">IP del anfitrión</span><b id="host"></b></div>
         </div>
         <p id="locked" class="lock" hidden>🔒 Esta sala tiene <b>contraseña</b>. No va en el link: pídesela al anfitrión y escríbela en el juego al entrar.</p>
         <a id="open" class="btn open" href="#">🎲 Abrir el juego y unirme</a>
-        <p class="muted">Si tu navegador pregunta, permite abrir <b>Macacangi Party</b>.</p>
+        <p class="muted">Si tu navegador pregunta, permite abrir <b>Curao Party: Copeteverse</b>.</p>
         <section class="get-box">
           <p class="get-title">⬇️ ¿No lo tienes? Descárgalo <small id="ver"></small></p>
           <div class="get-grid">
@@ -125,7 +127,9 @@
         document.getElementById('code').textContent = code
         const p2p = host === 'p2p'
         const locked = q.get('clave') === '1'
+        const spectate = q.get('mirar') === '1'
         document.getElementById('locked').hidden = !locked
+        document.getElementById('inviteText').textContent = spectate ? 'Te invitaron a mirar una partida.' : '¡Te invitaron a una partida!'
         document.getElementById('host').textContent = p2p ? 'P2P directo' : host
         if (p2p) {
           document.getElementById('hostLabel').textContent = 'Conexión'
@@ -134,9 +138,10 @@
           // versión web sin servidor (publicada en ../jugar/)
           const web = document.getElementById('web')
           web.href = `../jugar/?sala=${code}&p2p=1${locked ? '&clave=1' : ''}`
-          web.hidden = false
+          web.hidden = spectate
         }
-        const url = `macacangi://unirse?sala=${code}&host=${encodeURIComponent(host)}${locked ? '&clave=1' : ''}`
+        const url = `macacangi://unirse?sala=${code}&host=${encodeURIComponent(host)}${locked ? '&clave=1' : ''}${spectate ? '&mirar=1' : ''}`
+        if (spectate) document.getElementById('open').textContent = '👀 Abrir el juego y mirar'
         document.getElementById('open').href = url
         // intenta abrir el juego al tiro (el navegador pide permiso)
         setTimeout(() => (location.href = url), 400)
@@ -147,7 +152,7 @@
       // Descarga directa: se busca la última versión y los botones bajan el archivo al tiro
       // (sin pasar por la página de GitHub). Si la consulta falla, quedan apuntando a los releases.
       const ASSETS = {
-        dlSetup: /^Macacangi-Party-Setup-[\d.]+\.exe$/,
+        dlSetup: /^Curao-Party-Setup-[\d.]+\.exe$/,
         dlPortable: /-portable\.exe$/,
         dlLinux: /\.AppImage$/,
       }
