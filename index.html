@@ -44,7 +44,7 @@
     <link rel="icon" href="icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet" />
     <style>
       :root {
         --ink: #2a1c10;
@@ -154,6 +154,46 @@
         .features, .gallery, .steps, .downloads { grid-template-columns: 1fr; }
       }
       .brand-sub { display: block; font-size: 0.45em; letter-spacing: 3px; color: #ffd54f; line-height: 1; }
+          /* Logo épico (igual que en el juego) */
+      .epic-h1 { margin: 0; line-height: 1; }
+      .epic-logo { --fs: clamp(40px, 7vw, 76px); display: inline-flex; flex-direction: column; align-items: center; line-height: 0.9; perspective: 600px; text-shadow: none; letter-spacing: 0; color: inherit; }
+      .epic-logo.xl { --fs: clamp(56px, 11vw, 140px); }
+      .epic-logo.sm { --fs: 30px; }
+      .epic-main {
+        display: grid; font-family: Anton, Impact, sans-serif; font-size: var(--fs); letter-spacing: 0.04em; white-space: nowrap;
+        transform: rotateX(16deg) scaleY(1.08); transform-origin: 50% 100%;
+        filter: drop-shadow(0 0 calc(var(--fs) * 0.14) #ff6a0070);
+      }
+      .epic-logo .epic-main > span { grid-area: 1 / 1; }
+      /* relieve: contorno oscuro + extrusión hacia abajo (detrás) */
+      .epic-logo .epic-back {
+        color: #3a1203; -webkit-text-stroke: calc(var(--fs) * 0.05) #1e0801; paint-order: stroke fill;
+        text-shadow: 0 2px 0 #6b2a06, 0 4px 0 #5b1f05, 0 6px 0 #4a1904, 0 8px 0 #3a1203, 0 calc(var(--fs) * 0.14) calc(var(--fs) * 0.2) #000d;
+      }
+      /* metal dorado (adelante) */
+      .epic-logo .epic-front {
+        color: transparent; -webkit-background-clip: text; background-clip: text;
+        background-image: linear-gradient(180deg, #fffdf2 0%, #ffe7a0 22%, #f6b600 46%, #8a4a00 50%, #c77d00 56%, #ffd447 78%, #fff6cf 100%);
+      }
+      /* brillo que recorre las letras */
+      .epic-logo .epic-shine {
+        color: transparent; -webkit-background-clip: text; background-clip: text;
+        background-image: linear-gradient(105deg, transparent 42%, #ffffffe6 50%, transparent 58%); background-size: 300% 100%;
+        animation: epic-shine 4.5s 0.8s ease-in-out infinite;
+      }
+      @keyframes epic-shine { 0% { background-position: 120% 0; } 35%, 100% { background-position: -40% 0; } }
+      .epic-sub { display: flex; align-items: center; gap: calc(var(--fs) * 0.14); margin-top: calc(var(--fs) * 0.1); }
+      .epic-sub i { display: block; width: calc(var(--fs) * 0.9); height: calc(var(--fs) * 0.06); border-radius: 2px; background: linear-gradient(90deg, transparent, #d50000 30%, #ff5252 70%, #ffd54f); box-shadow: 0 0 10px #ff1744aa; }
+      .epic-sub i:last-child { transform: scaleX(-1); }
+      .epic-logo .epic-sub span {
+        font-family: Anton, Impact, sans-serif; font-size: calc(var(--fs) * 0.32); letter-spacing: 0.32em; margin-right: -0.32em; white-space: nowrap;
+        color: transparent; -webkit-background-clip: text; background-clip: text;
+        background-image: linear-gradient(180deg, #ffffff 0%, #ffc4c4 40%, #e10600 52%, #ff5a4a 100%);
+        filter: drop-shadow(0 2px 0 #3a0000) drop-shadow(0 0 8px #ff174488);
+      }
+      .epic-logo.sm .epic-sub { margin-top: 2px; }
+      .epic-logo.sm .epic-sub i { display: none; }
+      .epic-logo.sm .epic-main { transform: none; }
     </style>
   </head>
   <body>
@@ -163,7 +203,7 @@
           <a class="brand" href="./">
             <img src="icon.png" alt="" />
             <div>
-              <h1 class="bangers">Curao <span>Party</span> <small class="brand-sub">Copeteverse</small> 🍻</h1>
+              <h1 class="epic-h1"><div class="epic-logo" role="img" aria-label="Curao Party: Copeteverse"><div class="epic-main" aria-hidden="true"><span class="epic-back">CURAO PARTY</span><span class="epic-front">CURAO PARTY</span><span class="epic-shine">CURAO PARTY</span></div><div class="epic-sub" aria-hidden="true"><i></i><span>COPETEVERSE</span><i></i></div></div></h1>
               <p>El juego de tablero para carretear. Beber con responsabilidad… o no tanto.</p>
             </div>
           </a>
