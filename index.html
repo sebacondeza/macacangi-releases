@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Curao Party: Copeteverse: party game gratis chileno para carretear</title>
-    <meta name="description" content="¿Buscas un party game gratis en Chile? Juega Curao Party: Copeteverse: tablero 3D de temática chilena, 30 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
+    <meta name="description" content="¿Buscas un party game gratis en Chile? Juega Curao Party: Copeteverse: tablero 3D de temática chilena, 34 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sebacondeza.github.io/macacangi-releases/" />
     <meta name="google-site-verification" content="C3hAZkJav9RDWLQu-9aS6Bcg-3XktcgtZqG92izZudA" />
@@ -18,18 +18,18 @@
     <meta property="og:site_name" content="Curao Party: Copeteverse" />
     <meta property="og:url" content="https://sebacondeza.github.io/macacangi-releases/" />
     <meta property="og:title" content="Curao Party: Copeteverse: party game gratis chileno para carretear" />
-    <meta property="og:description" content="Party game gratis de temática chilena: 30 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
+    <meta property="og:description" content="Party game gratis de temática chilena: 34 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
     <meta property="og:image" content="https://sebacondeza.github.io/macacangi-releases/img/tablero.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Curao Party: Copeteverse: party game gratis chileno para carretear" />
-    <meta name="twitter:description" content="Party game gratis de temática chilena: 30 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
+    <meta name="twitter:description" content="Party game gratis de temática chilena: 34 minijuegos para jugar con amigos, online o en un PC. Descarga para Windows y Linux." />
     <meta name="twitter:image" content="https://sebacondeza.github.io/macacangi-releases/img/tablero.jpg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Curao Party: Copeteverse",
-        "description": "Party game gratis de temática chilena para jugar con amigos: tablero 3D, 30 minijuegos y modos local, online y navegador.",
+        "description": "Party game gratis de temática chilena para jugar con amigos: tablero 3D, 34 minijuegos y modos local, online y navegador.",
         "url": "https://sebacondeza.github.io/macacangi-releases/",
         "applicationCategory": "GameApplication",
         "operatingSystem": ["Windows 10", "Windows 11", "Linux", "Web browser"],
@@ -46,30 +46,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet" />
     <style>
+      /* tema "consola" (igual que el juego): vidrio oscuro azulado, texto claro, líneas blancas finas */
       :root {
-        --ink: #2a1c10;
-        --muted: #7a6650;
-        --panel: #fbf3e2;
-        --line: #c9b58c;
-        --red: #c62828;
-        --blue: #1565c0;
+        --bg: #070b14;
+        --ink: #e8ecf4;
+        --muted: #9aa4b8;
+        --panel: rgba(13, 19, 34, 0.86);
+        --surface: rgba(255, 255, 255, 0.06);
+        --surface2: rgba(255, 255, 255, 0.1);
+        --line: rgba(255, 255, 255, 0.18);
+        --line-strong: rgba(255, 255, 255, 0.7);
+        --red: #ff5252;
+        --blue: #64b5f6;
         --gold: #ffb300;
       }
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        font-family: Nunito, system-ui, 'Segoe UI', sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 15% 5%, #d52b1e44, transparent 35%),
-          radial-gradient(circle at 85% 95%, #0039a644, transparent 35%),
-          repeating-linear-gradient(90deg, #5d3a1a 0 40px, #63401e 40px 80px);
-        min-height: 100vh;
-      }
-      a { color: var(--blue); }
-      .wrap { max-width: 1120px; margin: 0 auto; padding: 16px; }
-      .card { background: var(--panel); border: 6px solid #3b2a1a; border-radius: 24px; box-shadow: 0 20px 60px #0008; padding: clamp(18px, 3vw, 36px); }
+      html { scroll-behavior: smooth; background: var(--bg); }
+      body { margin: 0; font-family: Nunito, system-ui, 'Segoe UI', sans-serif; color: var(--ink); background: var(--bg); min-height: 100vh; overflow-x: hidden; }
+      /* fondo animado (como el del menú del juego) */
+      .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: #0a0618; }
+      .bg i { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(70px); opacity: 0.55; animation: drift 22s ease-in-out infinite alternate; }
+      .bg i:nth-child(1) { background: #d52b1e; left: -18vmax; top: -22vmax; }
+      .bg i:nth-child(2) { background: #1a3fb8; right: -20vmax; bottom: -25vmax; animation-delay: -7s; }
+      .bg i:nth-child(3) { background: #5b1fa8; left: 30vw; top: 35vh; width: 40vmax; height: 40vmax; opacity: 0.35; animation-delay: -13s; }
+      .bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, #05030dcc 100%), repeating-linear-gradient(0deg, #ffffff05 0 1px, transparent 1px 4px); }
+      @keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(8vw, 6vh) scale(1.15); } }
+      @media (prefers-reduced-motion: reduce) { .bg i { animation: none; } }
+      a { color: #90caf9; }
+      .wrap { max-width: 1160px; margin: 0 auto; padding: 16px; }
+      .card { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 30px 80px #000a, inset 0 1px 0 #ffffff14; padding: clamp(18px, 3vw, 36px); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
       .bangers { font-family: Bangers, Impact, sans-serif; font-weight: 400; letter-spacing: 1px; }
 
       /* encabezado */
@@ -83,75 +88,85 @@
       /* botón de donar (igual que en el juego) */
       .donate {
         display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink);
-        background: linear-gradient(180deg, #ffe082, #ffb300); border: 3px solid var(--ink); border-radius: 99px;
-        padding: 6px 18px 6px 8px; box-shadow: 0 4px 0 var(--ink); animation: breathe 2.4s ease-in-out infinite;
+        background: linear-gradient(180deg, #ffe082, #ffb300); border: 2px solid #3e2723; border-radius: 99px; color: #2a1c10;
+        padding: 6px 18px 6px 8px; box-shadow: 0 4px 0 #3e2723; animation: breathe 2.4s ease-in-out infinite;
       }
-      .donate .mug { display: grid; place-items: center; width: 42px; height: 42px; font-size: 26px; background: #fff8e1; border: 2px solid var(--ink); border-radius: 50%; animation: cheers 2.4s ease-in-out infinite; }
+      .donate .mug { display: grid; place-items: center; width: 42px; height: 42px; font-size: 26px; background: #fff8e1; border: 2px solid #3e2723; border-radius: 50%; animation: cheers 2.4s ease-in-out infinite; }
       .donate b { font-family: Bangers, Impact, sans-serif; font-weight: 400; font-size: 21px; letter-spacing: 1px; display: block; line-height: 1.1; }
       .donate small { font-size: 12px; font-weight: 800; color: #5d4037; }
       .donate:hover { animation-play-state: paused; transform: scale(1.05); }
-      @keyframes breathe { 0%, 100% { transform: scale(1); box-shadow: 0 4px 0 var(--ink), 0 0 0 0 #ffb30000; } 50% { transform: scale(1.06); box-shadow: 0 4px 0 var(--ink), 0 0 0 10px #ffb30055; } }
+      @keyframes breathe { 0%, 100% { transform: scale(1); box-shadow: 0 4px 0 #3e2723, 0 0 0 0 #ffb30000; } 50% { transform: scale(1.06); box-shadow: 0 4px 0 #3e2723, 0 0 0 10px #ffb30055; } }
       @keyframes cheers { 0%, 60%, 100% { transform: rotate(0); } 70% { transform: rotate(-14deg); } 80% { transform: rotate(10deg); } 90% { transform: rotate(-6deg); } }
       @media (prefers-reduced-motion: reduce) { .donate, .donate .mug { animation: none; } }
 
       /* portada */
       .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: center; margin-top: 22px; }
-      .shot { width: 100%; display: block; border-radius: 16px; border: 4px solid #3b2a1a; box-shadow: 0 10px 30px #0005; }
-      .pitch h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; color: var(--red); }
+      .shot { width: 100%; display: block; border-radius: 14px; border: 1px solid var(--line-strong); box-shadow: 0 14px 40px #000a; }
+      .pitch h2 { margin: 0 0 8px; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; color: #fff; text-shadow: 0 0 18px #ff525288; }
       .pitch p { margin: 0 0 14px; font-size: 17px; line-height: 1.45; }
       .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-      .tag { background: #fff; border: 2px solid var(--line); border-radius: 99px; padding: 3px 10px; font-weight: 800; font-size: 13px; }
+      .tag { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 4px 11px; font-weight: 800; font-size: 13px; }
 
-      .btn { display: flex; align-items: center; justify-content: center; gap: 8px; flex-direction: column; text-align: center; text-decoration: none; color: var(--ink); border: 3px solid var(--ink); border-radius: 14px; box-shadow: 0 4px 0 var(--ink); padding: 12px 14px; font-weight: 900; font-size: 18px; cursor: pointer; background: #fff; font-family: inherit; }
+      .btn { display: flex; align-items: center; justify-content: center; gap: 6px; flex-direction: column; text-align: center; text-decoration: none; color: var(--ink); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 6px 18px #0006; padding: 12px 14px; font-weight: 900; font-size: 18px; cursor: pointer; background: var(--surface); font-family: inherit; transition: background 0.15s, border-color 0.15s, transform 0.1s; }
+      .btn:hover { background: var(--surface2); border-color: var(--line-strong); }
       .btn small { font-size: 12px; font-weight: 800; color: var(--muted); }
-      .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ink); }
-      .btn.main { background: linear-gradient(#ff5252, #c62828); color: #fff; border-color: #7f0000; box-shadow: 0 4px 0 #7f0000; }
+      .btn:active { transform: translateY(2px); }
+      .btn.main { background: linear-gradient(#ff5252, #c62828); color: #fff; border-color: #ff8a80; box-shadow: 0 4px 0 #7f0000, 0 0 24px #ff174466; }
+      .btn.main:hover { background: linear-gradient(#ff6b6b, #d32f2f); }
       .btn.main small { color: #ffe0e0; }
-      .btn.gold { background: #ffd54f; }
+      .btn.gold { background: linear-gradient(#ffe082, #ffb300); color: #2a1c10; border-color: #ffe9a8; }
+      .btn.gold:hover { background: linear-gradient(#ffecb3, #ffc107); }
+      .btn.gold small { color: #5d4037; }
       .downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .downloads .btn.main { grid-column: 1 / -1; font-size: 22px; }
       .alt-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-weight: 800; font-size: 14px; }
       .note { color: var(--muted); font-size: 13px; font-weight: 700; margin: 10px 0 0; }
-      #dlNote { color: #2e7d32; }
+      #dlNote { color: #81c784; }
 
       /* compartir */
-      .share { margin-top: 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; background: #fff8; border: 2px dashed var(--line); border-radius: 16px; padding: 12px; }
+      .share { margin-top: 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; background: var(--surface); border: 1px dashed var(--line); border-radius: 16px; padding: 12px; }
       .share b { font-size: 18px; }
       .share .btn { flex-direction: row; font-size: 15px; padding: 8px 14px; }
-      .btn.wa { background: #25d366; color: #fff; border-color: #0b6b33; box-shadow: 0 4px 0 #0b6b33; }
+      .btn.wa { background: #25d366; color: #fff; border-color: #7fe9a8; box-shadow: 0 4px 0 #0b6b33; }
+      .btn.wa:hover { background: #2ee673; }
 
       /* secciones */
       section { margin-top: 34px; }
-      section > h2 { font-family: Bangers, Impact, sans-serif; font-weight: 400; letter-spacing: 1px; font-size: 34px; margin: 0 0 14px; text-align: center; }
+      section > h2 { display: flex; align-items: center; gap: 14px; font-family: Anton, Impact, sans-serif; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; font-size: clamp(20px, 3vw, 26px); margin: 0 0 16px; text-align: center; }
+      section > h2::before, section > h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line-strong), transparent); }
       .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-      .feature { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+      .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
       .feature .ico { font-size: 30px; }
       .feature h3 { margin: 4px 0 4px; font-size: 18px; }
-      .feature p { margin: 0; color: #4e3d2c; line-height: 1.4; }
+      .feature p { margin: 0; color: #c3cad8; line-height: 1.4; }
       .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-      .gallery figure { margin: 0; background: #fff9; border: 2px solid var(--line); border-radius: 16px; overflow: hidden; }
-      .gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-      .gallery figcaption { padding: 8px 12px 10px; font-size: 14px; line-height: 1.35; }
-      .gallery figcaption b { display: block; font-size: 16px; }
+      .gallery.games { grid-template-columns: repeat(4, 1fr); }
+      @media (max-width: 1100px) { .gallery.games { grid-template-columns: repeat(3, 1fr); } }
+      .gallery figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+      .gallery img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+      .gallery figure { transition: transform 0.15s, border-color 0.15s; }
+      .gallery figure:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+      .gallery figcaption { padding: 8px 12px 10px; font-size: 14px; line-height: 1.35; color: #c3cad8; }
+      .gallery figcaption b { display: block; font-size: 16px; color: var(--ink); }
       .gallery figure.wide { grid-column: 1 / -1; }
-      .gallery figure.wide img { aspect-ratio: auto; object-fit: contain; background: #fff8ec; }
+      .gallery figure.wide img { aspect-ratio: auto; object-fit: contain; background: #0b1220; }
       .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: s; }
-      .step { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px 14px 56px; position: relative; line-height: 1.4; }
+      .step { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px 14px 56px; position: relative; line-height: 1.4; }
       .step::before { counter-increment: s; content: counter(s); position: absolute; left: 14px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; font: 400 20px/30px Bangers, Impact, sans-serif; text-align: center; }
-      .news { background: #fff9; border: 2px solid var(--line); border-radius: 16px; padding: 14px 18px; }
+      .news { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; }
       .news h3 { margin: 0 0 6px; }
       .news ul { margin: 0; padding-left: 20px; line-height: 1.45; }
-      footer { text-align: center; color: #f3e5cf; font-weight: 700; font-size: 14px; padding: 18px 8px 28px; }
+      footer { text-align: center; color: var(--muted); font-weight: 700; font-size: 14px; padding: 18px 8px 28px; }
       footer a { color: #ffe082; }
 
       @media (max-width: 900px) {
         .hero { grid-template-columns: 1fr; }
-        .features, .gallery, .steps { grid-template-columns: 1fr 1fr; }
+        .features, .gallery, .gallery.games, .steps { grid-template-columns: 1fr 1fr; }
       }
       @media (max-width: 560px) {
         header { justify-content: center; }
         .brand img { width: 52px; height: 52px; }
-        .features, .gallery, .steps, .downloads { grid-template-columns: 1fr; }
+        .features, .gallery, .gallery.games, .steps, .downloads { grid-template-columns: 1fr; }
       }
       .brand-sub { display: block; font-size: 0.45em; letter-spacing: 3px; color: #ffd54f; line-height: 1; }
           /* Logo épico (igual que en el juego) */
@@ -197,6 +212,7 @@
     </style>
   </head>
   <body>
+    <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="wrap">
       <main class="card">
         <header>
@@ -217,12 +233,14 @@
           <img class="shot" src="img/tablero.jpg" alt="El tablero 3D de Curao Party: Copeteverse con las fichas, las casillas y el mapa de Chile" />
           <div class="pitch">
             <h2 class="bangers">El tablero 3D del carrete, con cartas bien chilenas</h2>
-            <p>Un <b>party game gratis de temática chilena</b> para jugar con amigos: lanza el dado, cae en <b>Yo nunca</b>, <b>Karaoke</b> o <b>Cultura chupística</b>, y compitan en 30 minijuegos. Jueguen online o en un solo PC.</p>
+            <p>Un <b>party game gratis de temática chilena</b> para jugar con amigos: lanza el dado, cae en <b>Yo nunca</b>, <b>Karaoke</b> o <b>Cultura chupística</b>, y compitan en 34 minijuegos. Jueguen online, en un solo PC o desde el celular.</p>
             <div class="tags">
-              <span class="tag">🎮 30 minijuegos</span>
+              <span class="tag">🎮 34 minijuegos</span>
               <span class="tag">👥 2 a 8 jugadores</span>
               <span class="tag">🎭 17 personajes</span>
               <span class="tag">🌐 Online sin servidor</span>
+              <span class="tag">📱 También en el celular</span>
+              <span class="tag">🕹️ Control de Xbox</span>
               <span class="tag">🆓 Gratis</span>
             </div>
             <div class="downloads">
@@ -232,7 +250,7 @@
               <a id="dlPortable" class="btn gold" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">
                 🎒 Portable<small>Un solo .exe, sin instalar</small>
               </a>
-              <a class="btn" href="jugar/">🌐 Jugar en el navegador<small>Sin descargar (online P2P)</small></a>
+              <a class="btn" href="jugar/">🌐 Jugar en el navegador<small>PC o celular, sin descargar</small></a>
             </div>
             <div class="alt-links">
               <a id="dlLinux" href="https://github.com/sebacondeza/macacangi-releases/releases/latest">🐧 Linux / Steam Deck (AppImage)</a>
@@ -254,31 +272,50 @@
           <h2>¿Qué trae?</h2>
           <div class="features">
             <div class="feature"><div class="ico">🎲</div><h3>Tablero 3D a la chilena</h3><p>Entre 50 y 100 casillas: Yo nunca, Karaoke, Cultura chupística, Ejercicio, VS, Bombal, Desastre natural y más. El orden se decide con un dado. Personalízalas con tus propias imágenes.</p></div>
-            <div class="feature"><div class="ico">🎮</div><h3>30 minijuegos</h3><p>Pictionary chileno, karts por Santiago y Concepción, chismosos del pasaje, tejo en la fonda, balacera en el Metro, La Pulenta (cartas chilenas), el Impostor… y se suman más.</p></div>
+            <div class="feature"><div class="ico">🎮</div><h3>34 minijuegos</h3><p>Batalla de aura, baile con Los Prisioneros y La Ley, Pictionary en la sala de clases, karts por Santiago y Concepción, haciendo la cimarra, tejo en la fonda, balaceras, La Pulenta, Black Jack con naipes chilenos… y se suman más.</p></div>
             <div class="feature"><div class="ico">🌐</div><h3>Online sin servidor</h3><p>Crea una sala y tus amigos entran con un código de 4 letras, cada uno desde su casa. Sin abrir puertos. Contraseña opcional.</p></div>
             <div class="feature"><div class="ico">🖥️</div><h3>O en un solo PC</h3><p>Pónganlo en la tele y se pasan el turno. Funciona sin internet.</p></div>
+            <div class="feature"><div class="ico">🕹️</div><h3>Con control de Xbox</h3><p>Minijuegos a pantalla completa con sala de espera, reglas y controles a la vista. Enchufa tus controles: en un PC, cada control maneja a su jugador.</p></div>
+            <div class="feature"><div class="ico">📱</div><h3>Desde el celular</h3><p>Entra a una sala desde el navegador del teléfono: joysticks y botones táctiles en cada minijuego, pensados para jugar con la mano derecha.</p></div>
+            <div class="feature"><div class="ico">🏆</div><h3>Premiación en 3D</h3><p>Después de cada minijuego, podio con canción propia y el castigo para el último. Música y efectos con volumen por separado.</p></div>
             <div class="feature"><div class="ico">👀</div><h3>Modo espectador</h3><p>Para transmitir en Discord sin mostrar las cartas ni los secretos de nadie.</p></div>
             <div class="feature"><div class="ico">🔄</div><h3>Siempre al día</h3><p>La app se actualiza sola con cada versión nueva. Tú solo juega.</p></div>
           </div>
         </section>
 
         <section>
-          <h2>Algunos minijuegos</h2>
-          <div class="gallery">
-            <figure><a href="img/pictionary.png" target="_blank"><img src="img/pictionary.png" alt="Pictionary chileno" loading="lazy" /></a><figcaption><b>🎨 Pictionary chileno</b>Uno dibuja una palabra bien chilena y los demás adivinan. ¿Empanada o sombrero?</figcaption></figure>
-            <figure><a href="img/balacera-estacion.png" target="_blank"><img src="img/balacera-estacion.png" alt="Balacera en Estación Central" loading="lazy" /></a><figcaption><b>🚂 Balacera en Estación Central</b>Todos contra todos bajo la nave de fierro, entre trenes de EFE.</figcaption></figure>
-            <figure><a href="img/kart-santiago.png" target="_blank"><img src="img/kart-santiago.png" alt="Kart Santiaguino" loading="lazy" /></a><figcaption><b>🚕 Kart Santiaguino</b>Carrera de karts por Santiago: Templo Votivo, Estación Central, Costanera, La Moneda y el Mapocho.</figcaption></figure>
-            <figure><a href="img/kart-concepcion.png" target="_blank"><img src="img/kart-concepcion.png" alt="Kart Penquista" loading="lazy" /></a><figcaption><b>🏎️ Kart Penquista</b>Por el puente Llacolén con empanadas voladoras, completos teledirigidos y cóndores.</figcaption></figure>
-            <figure><a href="img/chismosos.jpg" target="_blank"><img src="img/chismosos.jpg" alt="Chismosos del pasaje" loading="lazy" /></a><figcaption><b>🧹 Chismosos del pasaje</b>Sal a "barrer" para pelar la pelea sin que te pillen.</figcaption></figure>
-            <figure><a href="img/copiar.jpg" target="_blank"><img src="img/copiar.jpg" alt="Copiar en la prueba" loading="lazy" /></a><figcaption><b>📱 Copiar en la prueba</b>Copia del celu mientras la profe escribe en la pizarra… y que no se dé vuelta.</figcaption></figure>
-            <figure><a href="img/papas.jpg" target="_blank"><img src="img/papas.jpg" alt="La bolsa de papitas" loading="lazy" /></a><figcaption><b>🥔 La bolsa de papitas</b>Todos meten la mano. La dorada vale 5; la bolsa vacía, −3.</figcaption></figure>
-            <figure><a href="img/tejo.jpg" target="_blank"><img src="img/tejo.jpg" alt="Tejo en la fonda" loading="lazy" /></a><figcaption><b>🥏 Tejo en la fonda</b>Chuzazo sobre la lienza: 5 puntos. Ojo con el viento.</figcaption></figure>
-            <figure><a href="img/metro.jpg" target="_blank"><img src="img/metro.jpg" alt="Balacera en el Metro" loading="lazy" /></a><figcaption><b>🔫 Balacera en el Metro</b>Todos contra todos en Baquedano (sin pasar la Bip).</figcaption></figure>
-            <figure><a href="img/colectivo.jpg" target="_blank"><img src="img/colectivo.jpg" alt="Esperando el colectivo" loading="lazy" /></a><figcaption><b>🚕 Esperando el colectivo</b>Hazle señas machacando el botón. El último se queda… y lo asaltan.</figcaption></figure>
-            <figure><a href="img/palomas.jpg" target="_blank"><img src="img/palomas.jpg" alt="Alimentar palomas" loading="lazy" /></a><figcaption><b>🕊️ Alimentar palomas</b>Comen más que tío en asado. Cada miga es un punto.</figcaption></figure>
-            <figure><a href="img/luzverde.jpg" target="_blank"><img src="img/luzverde.jpg" alt="Luz verde, luz roja" loading="lazy" /></a><figcaption><b>🚦 Luz verde, luz roja</b>Corre con luz verde y quédate como estatua cuando la muñeca se da vuelta.</figcaption></figure>
-            <figure><a href="img/platanos.jpg" target="_blank"><img src="img/platanos.jpg" alt="Plátanos en las alturas" loading="lazy" /></a><figcaption><b>🍌 Plátanos en las alturas</b>Junta plátanos y aturde a los demás para que boten los suyos.</figcaption></figure>
-            <figure><a href="img/golf.jpg" target="_blank"><img src="img/golf.jpg" alt="Mini golf chileno" loading="lazy" /></a><figcaption><b>⛳ Mini golf chileno</b>De La Moneda a Rapa Nui, esquivando moais.</figcaption></figure>
+          <h2>Los minijuegos</h2>
+          <div class="gallery games">
+            <figure><a href="img/aura.jpg" target="_blank"><img src="img/aura.jpg" alt="Batalla de aura" loading="lazy" width="1280" height="720" /></a><figcaption><b>⚡ Batalla de aura</b>Carga tu aura y choca rayos estilo anime en el desierto de Atacama.</figcaption></figure>
+            <figure><a href="img/baile.jpg" target="_blank"><img src="img/baile.jpg" alt="Baile en la disco" loading="lazy" width="1280" height="720" /></a><figcaption><b>💃 Baile en la disco</b>Notas que caen al ritmo de cumbia, cueca, Los Prisioneros o La Ley. ¡O carga tu propio MIDI!</figcaption></figure>
+            <figure><a href="img/cimarra.jpg" target="_blank"><img src="img/cimarra.jpg" alt="Haciendo la cimarra" loading="lazy" width="1280" height="720" /></a><figcaption><b>🎒 Haciendo la cimarra</b>1 contra todos: escápate del colegio por una de las 3 salidas sin que te pille el inspector.</figcaption></figure>
+            <figure><a href="img/tira.jpg" target="_blank"><img src="img/tira.jpg" alt="Tirar la cuerda" loading="lazy" width="1280" height="720" /></a><figcaption><b>🪢 Tirar la cuerda</b>Al ritmo del bombo, por equipos y sobre un pozo de barro.</figcaption></figure>
+            <figure><a href="img/pictionary.jpg" target="_blank"><img src="img/pictionary.jpg" alt="Pictionary chileno" loading="lazy" width="1280" height="720" /></a><figcaption><b>🎨 Pictionary chileno</b>En la sala de clases: uno dibuja una palabra bien chilena y los demás adivinan.</figcaption></figure>
+            <figure><a href="img/kart-santiago.jpg" target="_blank"><img src="img/kart-santiago.jpg" alt="Kart Santiaguino" loading="lazy" width="1280" height="720" /></a><figcaption><b>🚕 Kart Santiaguino</b>Por Santiago: Templo Votivo, Estación Central, Costanera, La Moneda y el Mapocho.</figcaption></figure>
+            <figure><a href="img/kart-concepcion.jpg" target="_blank"><img src="img/kart-concepcion.jpg" alt="Kart Penquista" loading="lazy" width="1280" height="720" /></a><figcaption><b>🏎️ Kart Penquista</b>Por el puente Llacolén con empanadas voladoras, completos teledirigidos y cóndores.</figcaption></figure>
+            <figure><a href="img/balacera-estacion.jpg" target="_blank"><img src="img/balacera-estacion.jpg" alt="Balacera en Estación Central" loading="lazy" width="1280" height="720" /></a><figcaption><b>🚂 Balacera en Estación Central</b>Todos contra todos bajo la nave de fierro, entre trenes de EFE.</figcaption></figure>
+            <figure><a href="img/metro.jpg" target="_blank"><img src="img/metro.jpg" alt="Balacera en el Metro" loading="lazy" width="1280" height="720" /></a><figcaption><b>🔫 Balacera en el Metro</b>Todos contra todos en Baquedano (sin pasar la Bip).</figcaption></figure>
+            <figure><a href="img/pulenta.jpg" target="_blank"><img src="img/pulenta.jpg" alt="La Pulenta" loading="lazy" width="1280" height="720" /></a><figcaption><b>🃏 La Pulenta</b>Cartas bien chilenas en la mesa de la abuela: vino, choclo, palta y mar.</figcaption></figure>
+            <figure><a href="img/blackjack.jpg" target="_blank"><img src="img/blackjack.jpg" alt="Black Jack" loading="lazy" width="1280" height="720" /></a><figcaption><b>♠️ Black Jack</b>Una mano contra la casa, con naipes chilenos.</figcaption></figure>
+            <figure><a href="img/cachipun.jpg" target="_blank"><img src="img/cachipun.jpg" alt="Cachipún" loading="lazy" width="1280" height="720" /></a><figcaption><b>✊ Cachipún</b>Piedra, papel o tijera contra todos a la vez, con las manos al centro.</figcaption></figure>
+            <figure><a href="img/pong.jpg" target="_blank"><img src="img/pong.jpg" alt="Pong por ejes" loading="lazy" width="1280" height="720" /></a><figcaption><b>🏓 Pong por ejes</b>Cada uno defiende su lado: cancha, triángulo o cuadrado. El último en pie gana.</figcaption></figure>
+            <figure><a href="img/impostor.jpg" target="_blank"><img src="img/impostor.jpg" alt="El Impostor" loading="lazy" width="1280" height="720" /></a><figcaption><b>🕵️ El Impostor</b>Todos tienen la palabra menos uno. A votar quién anda perdido.</figcaption></figure>
+            <figure><a href="img/chismosos.jpg" target="_blank"><img src="img/chismosos.jpg" alt="Chismosos del pasaje" loading="lazy" width="1280" height="720" /></a><figcaption><b>🧹 Chismosos del pasaje</b>Sal a "barrer" para pelar la pelea sin que te pillen.</figcaption></figure>
+            <figure><a href="img/copiar.jpg" target="_blank"><img src="img/copiar.jpg" alt="Copiar en la prueba" loading="lazy" width="1280" height="720" /></a><figcaption><b>📱 Copiar en la prueba</b>Copia del celu mientras la profe escribe… y que no se dé vuelta.</figcaption></figure>
+            <figure><a href="img/sastreria.jpg" target="_blank"><img src="img/sastreria.jpg" alt="Sastrería de la Fonda" loading="lazy" width="1280" height="720" /></a><figcaption><b>🧵 Sastrería de la Fonda</b>Mide, corta, cose y plancha un poncho chilote, traje de huaso o vestido de china.</figcaption></figure>
+            <figure><a href="img/cocina.jpg" target="_blank"><img src="img/cocina.jpg" alt="Cocinería El Curao" loading="lazy" width="1280" height="720" /></a><figcaption><b>🍳 Cocinería El Curao</b>Escribe los ingredientes del completo, la empanada y el pastel de choclo.</figcaption></figure>
+            <figure><a href="img/cuerda.jpg" target="_blank"><img src="img/cuerda.jpg" alt="Corta la cuerda" loading="lazy" width="1280" height="720" /></a><figcaption><b>✂️ Corta la cuerda</b>Que el huesillo caiga justo en el vaso de mote con huesillo.</figcaption></figure>
+            <figure><a href="img/tejo.jpg" target="_blank"><img src="img/tejo.jpg" alt="Tejo en la fonda" loading="lazy" width="1280" height="720" /></a><figcaption><b>🥏 Tejo en la fonda</b>Chuzazo sobre la lienza: 5 puntos. Ojo con el viento.</figcaption></figure>
+            <figure><a href="img/papas.jpg" target="_blank"><img src="img/papas.jpg" alt="La bolsa de papitas" loading="lazy" width="1280" height="720" /></a><figcaption><b>🥔 La bolsa de papitas</b>Junta un puñado sin que te pique el ají… y saca la mano antes de que llegue la mamá.</figcaption></figure>
+            <figure><a href="img/bomba.jpg" target="_blank"><img src="img/bomba.jpg" alt="Entregar la bomba" loading="lazy" width="1280" height="720" /></a><figcaption><b>💣 Entregar la bomba</b>Escribe la palabra y pásala altiro. Cero lealtad.</figcaption></figure>
+            <figure><a href="img/botones.jpg" target="_blank"><img src="img/botones.jpg" alt="Botón bomba" loading="lazy" width="1280" height="720" /></a><figcaption><b>🔴 Botón bomba</b>Un botón por jugador y uno esconde la bomba. ¿Cuál aprietas?</figcaption></figure>
+            <figure><a href="img/duelo.jpg" target="_blank"><img src="img/duelo.jpg" alt="Duelo de huasos" loading="lazy" width="1280" height="720" /></a><figcaption><b>🤠 Duelo de huasos</b>Cuando el juez baje el pañuelo, ¡aprieta! Si te adelantas, quedas como pollo.</figcaption></figure>
+            <figure><a href="img/sacos.jpg" target="_blank"><img src="img/sacos.jpg" alt="Carrera de sacos" loading="lazy" width="1280" height="720" /></a><figcaption><b>🥔 Carrera de sacos</b>Machaca tu tecla como si se acabara la chicha.</figcaption></figure>
+            <figure><a href="img/luzverde.jpg" target="_blank"><img src="img/luzverde.jpg" alt="Luz verde, luz roja" loading="lazy" width="1280" height="720" /></a><figcaption><b>🚦 Luz verde, luz roja</b>Corre con luz verde y quédate como estatua con luz roja.</figcaption></figure>
+            <figure><a href="img/colectivo.jpg" target="_blank"><img src="img/colectivo.jpg" alt="Esperando el colectivo" loading="lazy" width="1280" height="720" /></a><figcaption><b>🚕 Esperando el colectivo</b>Hazle señas machacando el botón. El último se queda… y lo asaltan.</figcaption></figure>
+            <figure><a href="img/palomas.jpg" target="_blank"><img src="img/palomas.jpg" alt="Alimentar palomas" loading="lazy" width="1280" height="720" /></a><figcaption><b>🕊️ Alimentar palomas</b>3 palomas por jugador, y una puede volverse dorada (3 puntos).</figcaption></figure>
+            <figure><a href="img/platanos.jpg" target="_blank"><img src="img/platanos.jpg" alt="Plátanos en las alturas" loading="lazy" width="1280" height="720" /></a><figcaption><b>🍌 Plátanos en las alturas</b>Junta plátanos y aturde a los demás para que boten los suyos.</figcaption></figure>
+            <figure><a href="img/golf.jpg" target="_blank"><img src="img/golf.jpg" alt="Mini golf chileno" loading="lazy" width="1280" height="720" /></a><figcaption><b>⛳ Mini golf chileno</b>De La Moneda a Rapa Nui, esquivando moais.</figcaption></figure>
           </div>
         </section>
 
