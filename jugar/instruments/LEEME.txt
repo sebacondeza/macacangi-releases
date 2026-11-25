@@ -1,0 +1,9 @@
+Samples de instrumentos para el lector de MIDI (Baile en la disco y Batalla de gallos).
+
+Instrumentos (carpetas con el nombre General MIDI): banco FluidR3 General MIDI, versión mp3 de
+github.com/gleitz/midi-js-soundfonts (carpeta FluidR3_GM), licencia MIT. Solo se incluye una nota cada
+3 semitonos; las de entremedio se generan cambiando la velocidad del sample más cercano. Cada archivo se
+llama por su número de nota MIDI (60 = Do central).
+
+Batería (carpeta drums): Versilian Community Sample Library (VCSL), licencia CC0 1.0 (dominio público),
+github.com/sgossner/VCSL, tomada de la recopilación github.com/danigb/samples (audio/vcsl).
